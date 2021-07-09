@@ -85,6 +85,7 @@ var WaveSurfer = {
 
         // Click-to-seek
         this.drawer.on('click', function (e, progress) {
+            console.log("CLICK!")
             setTimeout(function () {
                 my.seekTo(progress);
             }, 0);
@@ -198,6 +199,13 @@ var WaveSurfer = {
         }
         this.params.scrollParent = oldScrollParent;
         this.fireEvent('seek', progress);
+
+        console.log("getCurrentTime", this.backend.getPlayedPercents())
+        var karaokeaudio = document.getElementById("audio-karaoke");
+        var curentTime = this.getDuration()*this.backend.getPlayedPercents();
+        console.log("curentTime: ", curentTime)
+        karaokeaudio.currentTime = curentTime
+        console.log("karaokeaudio.currentTime: ", karaokeaudio.currentTime)
     },
 
     stop: function () {

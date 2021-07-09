@@ -39,6 +39,7 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700' rel='stylesheet' type='text/css'>
         <link href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 
         <!-- Demo -->
         <script src="../static/script/trivia.js"></script>
@@ -69,10 +70,17 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <button class="btn btn-info btn-block" data-action="" title="Export annotations to JSON">
+                    <button class="btn btn-info btn-block" data-action="" title="Import annotations JSON">
                         <i class="glyphicon glyphicon-file"></i>
                         Import
                     </button>
+                </div>
+
+                <div class="col-sm-2" id="karaoke-btn">
+                <button class="btn btn-info btn-block" data-action="karaoke-display" title="Import annotations JSON">
+                    <i class="fas fa-microphone"></i>
+                    Karaoke
+                </button>
                 </div>
 
             </div>
@@ -140,9 +148,10 @@
 
                 </div>
 
-                <div class="app">
+                <div class="app" id="karaoke-block">
                       <div class="aud-control">
                       <audio style="display: None" src="/static/media/goi_ten_em_trong_dem.mp3" id="audio-karaoke" controls></audio>
+{#                          <audio src="/static/media/goi_ten_em_trong_dem.mp3" id="audio-karaoke" controls></audio>#}
                       </div>
                       <div id="karaoke"></div>
                 </div>

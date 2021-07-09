@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         url: 'static/json/rashomon.json'
     }).on('success', function (data) {
         wavesurfer.load(
-            'static/media/goi_ten_em_trong_dem.mp3',
+            '/static/media/goi_ten_em_trong_dem.mp3',
             data
         );
     });
@@ -71,7 +71,19 @@ document.addEventListener('DOMContentLoaded', function () {
         //     });
         // }
 
-     wavesurfer.on('region-click', function (region, e) {
+         wavesurfer.util.ajax({
+                responseType: 'json',
+                url: 'static/json/annotations.json'
+            }).on('success', function (data) {
+                console.log("data: ", data)
+                console.log("localStorage.regions: ", localStorage.regions)
+                loadRegions(data);
+                // saveRegions();
+            });
+     });
+
+        wavesurfer.on('region-click', function (region, e) {
+         console.log("Region Click!")
         e.stopPropagation();
         // Play on click, loop on shift click
         e.shiftKey ? region.playLoop() : region.play();
@@ -90,17 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
     wavesurfer.on('finish', function () {
         console.log('Finished playing');
     });
-
-    wavesurfer.util.ajax({
-                responseType: 'json',
-                url: 'static/json/annotations.json'
-            }).on('success', function (data) {
-                console.log("data: ", data)
-                console.log("localStorage.regions: ", localStorage.regions)
-                loadRegions(data);
-                // saveRegions();
-            });
-     });
 
 });
 
@@ -406,6 +407,15 @@ GLOBAL_ACTIONS['zoom-out'] = function () {
     wavesurfer.zoom(value);
 
 
+};
+
+GLOBAL_ACTIONS['karaoke-display'] = function () {
+    var karaoke = document.getElementById("karaoke");
+    if (karaoke.style.display === "none") {
+        karaoke.style.display = "block";
+    } else {
+        karaoke.style.display = "none";
+    }
 };
 
 // Drag'n'drop

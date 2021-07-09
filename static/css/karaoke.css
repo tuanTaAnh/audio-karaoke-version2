@@ -9,7 +9,7 @@ h2{
 #karaoke{
     display: block;
     text-align: center;
-    width: 800px;
+    width: 850px;
     height: 100px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -63,7 +63,7 @@ pre{
 #karaoke .kara-text,
 #karaoke .kara-text-highlight {
   display: inline-block;
-  font-size: 40px;
+  font-size: 35px;
   white-space: nowrap;
 }
 

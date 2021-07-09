@@ -17,13 +17,14 @@ let GLOBAL_ACTIONS = {
 
     back: function() {
         var karaokeaudio = document.getElementById("audio-karaoke");
-        karaokeaudio.currentTime -= 2.05
+        karaokeaudio.currentTime = wavesurfer.getDuration()*wavesurfer.getCurrentTime();
+        console.log("karaokeaudio.currentTime: ", karaokeaudio.currentTime)
         wavesurfer.skipBackward();
     },
 
     forth: function() {
         var karaokeaudio = document.getElementById("audio-karaoke");
-        karaokeaudio.currentTime += 2.05
+        karaokeaudio.currentTime = wavesurfer.getDuration()*wavesurfer.getCurrentTime();
         wavesurfer.skipForward();
     },
 
